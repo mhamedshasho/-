@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 ملاحظاتي</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .notes-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        .notes-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .notes-header h1 {
+            margin: 0;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .notes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .notes-list li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            color: #333;
+            transition: background 0.3s ease;
+        }
+
+        .notes-list li:hover {
+            background: #f8f9fa;
+            padding-right: 25px;
+        }
+
+        .notes-list li::before {
+            content: "•";
+            color: #f5576c;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .add-button {
+            width: 100%;
+            padding: 15px 20px;
+            background: white;
+            border: none;
+            border-top: 2px dashed #eee;
+            color: #667eea;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .add-button:hover {
+            background: #f8f9fa;
+            color: #764ba2;
+            gap: 15px;
+        }
+
+        /* تخصيص شريط التمرير */
+        .notes-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .notes-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .notes-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 4px;
+        }
+
+        .notes-list::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="notes-card">
+        <div class="notes-header">
+            <h1>
+                <span>📝</span>
+                ملاحظاتي
+            </h1>
+        </div>
+        
+        <ul class="notes-list">
+            <li>تذكر إضافة التأثيرات</li>
+            <li>التحقق من التوافق</li>
+            <li>إصلاح مشكلة التمرير</li>
+        </ul>
+        
+        <button class="add-button" onclick="alert('✨ سيتم إضافة ملاحظة جديدة!')">
+            <span>➕</span>
+            إضافة ملاحظة جديدة
+        </button>
+    </div>
+
+    <script>
+        // يمكنك إضافة وظائف تفاعلية هنا
+        // مثال: إضافة ملاحظات جديدة ديناميكياً
+        
+        const addButton = document.querySelector('.add-button');
+        const notesList = document.querySelector('.notes-list');
+        
+        addButton.addEventListener('click', function() {
+            const newNote = prompt('📝 أدخل ملاحظتك الجديدة:');
+            if (newNote && newNote.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = newNote;
+                notesList.appendChild(li);
+                
+                // تمرير تلقائي للملاحظة الجديدة
+                li.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
